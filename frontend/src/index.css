@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    font-size: 13px;           /* ← Professional compact base */
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  
+  * { box-sizing: border-box; }
+  
+  body {
+    @apply font-sans antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11'; /* Improved Inter numerals */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.01em;
+  }
+
+  /* Smooth global theme transitions */
+  *:not(input):not(textarea) {
+    @apply transition-colors duration-200;
+  }
+  
+  /* Headings — tighter tracking for professional look */
+  h1 { font-size: 1.5rem;  font-weight: 700; letter-spacing: -0.025em; line-height: 1.2; }
+  h2 { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em;  line-height: 1.25; }
+  h3 { font-size: 1rem;    font-weight: 600; letter-spacing: -0.01em;  line-height: 1.3; }
+  p  { line-height: 1.5; }
+
+  /* Input defaults */
+  input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    color: #e2e8f0;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: rgba(99,102,241,0.5);
+    box-shadow: 0 0 0 2px rgba(99,102,241,0.1);
+  }
+  input::placeholder, textarea::placeholder {
+    color: rgba(100,116,139,0.45);
+    font-size: 11px;
+  }
+  select option {
+    background: #0f172a;
+    color: #e2e8f0;
+  }
+}
+
+
+@layer components {
+  /* ── Staggered card entrance ── */
+  .stagger-1 { animation-delay: 0.05s; }
+  .stagger-2 { animation-delay: 0.1s; }
+  .stagger-3 { animation-delay: 0.15s; }
+  .stagger-4 { animation-delay: 0.2s; }
+  .stagger-5 { animation-delay: 0.25s; }
+  .stagger-6 { animation-delay: 0.3s; }
+
+  /* ── Skeleton shimmer ── */
+  .skeleton-shimmer {
+    background: linear-gradient(90deg, transparent 25%, rgba(255,255,255,0.05) 50%, transparent 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  /* ── Light mode card: softer shadows & distinct borders ── */
+  .card-light, .glass, .bento-item {
+    @apply bg-white/95 backdrop-blur-md border border-surface-200/60 shadow-md;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  }
+
+  /* ── Dark mode card: frosted glass ── */
+  .dark .card-light, .dark .glass, .dark .bento-item {
+    @apply bg-surface-900/70 backdrop-blur-md border border-surface-800/80 shadow-lg shadow-black/30;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.02), 0 8px 30px rgba(0,0,0,0.4);
+  }
+
+  /* ── Sidebar & Navigation reset ── */
+  .sidebar-fixed {
+    @apply w-60 transition-all duration-300 overflow-hidden;
+  }
+
+  /* ── Smooth hover lift ── */
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+  .hover-lift:hover {
+    @apply -translate-y-1 shadow-xl;
+  }
+  .dark .hover-lift:hover {
+    @apply shadow-brand-500/5;
+  }
+
+  /* ── High Contrast Text fix ── */
+  .text-soft { @apply text-surface-500 dark:text-surface-400; }
+  .text-hard { @apply text-surface-900 dark:text-surface-100; }
+
+  /* ── Subtle gradient glow behind active nav ── */
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+  .hover-lift:hover {
+    @apply -translate-y-1 shadow-xl;
+  }
+  .dark .hover-lift:hover {
+    @apply shadow-brand-500/5;
+  }
+
+  /* ── Subtle gradient glow behind active nav ── */
+  .nav-glow {
+    @apply relative;
+  }
+  .nav-glow::after {
+    content: '';
+    @apply absolute inset-0 rounded-lg bg-brand-400/0 transition-all duration-300;
+  }
+  .nav-glow:hover::after {
+    @apply bg-brand-400/5;
+  }
+
+  /* ── Soft input focus ring ── */
+  .input-soft {
+    @apply w-full px-4 py-2.5 rounded-xl
+      border border-surface-200/80 dark:border-surface-700/60
+      bg-surface-50/50 dark:bg-surface-800/50
+      text-surface-900 dark:text-surface-100
+      placeholder:text-surface-400/60
+      focus:ring-2 focus:ring-brand-400/30 focus:border-brand-400
+      outline-none transition-all duration-200 text-sm;
+  }
+
+  /* ── Primary button with micro-animation ── */
+  .btn-brand {
+    @apply px-5 py-2.5 rounded-xl bg-brand-500 text-white text-sm font-semibold
+      hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/20
+      active:scale-[0.97] transition-all duration-200;
+  }
+
+  /* ── Outline button ── */
+  .btn-outline-brand {
+    @apply px-5 py-2.5 rounded-xl border border-surface-200 dark:border-surface-700
+      text-sm font-semibold
+      hover:border-brand-400 hover:text-brand-500 hover:bg-brand-500/5
+      active:scale-[0.97] transition-all duration-200;
+  }
+
+  /* ── Badge pill ── */
+  .badge-pill {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wide;
+  }
+}
+
+/* ── Light mode: soft ambient atmosphere ── */
+html:not(.dark) body {
+  background: linear-gradient(160deg, #eef2f6 0%, #e5e9f0 40%, #eceef2 100%);
+}
+
+/* ── Dark mode: deep navy atmosphere ── */
+html.dark body {
+  background: linear-gradient(160deg, #080e1a 0%, #0d1525 40%, #0a101e 100%);
+}
+
+/* ── Scrollbar styling ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(107, 114, 128, 0.3);
+  border-radius: 100px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(107, 114, 128, 0.5);
+}

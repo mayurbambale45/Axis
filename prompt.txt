@@ -1,0 +1,102 @@
+Prompt 1 - 
+Make the design of the my system professional and good looking like the other formal management system like use the size of the font small and make the design professinal follow the all the rules of the system design and  like scalability, efficient resource allocation, and robustness and improve the performance of the system and and improve secuity by followint the guidlines of the security of the web and make the industry ready application of this web also make the all the features and the buttons of the each role workable and working withhout error and remember that our club structure like number of members and they have one president, vp, secretary and other leads, and members and they work in single organizations so make the registration system according to the role of the club in registration panel and if any club memebr like president or vp or secretary or member and club mentor register the approval goes to thesuper adminfor the approve and super admin approve the registration then only it can log (this system due to security reason) and our college have number of clubs so make the demo clubs i give you the list of the clubs below make the clubs list and make available to students, i mean all students should visible all clubs and their events but club member can only able see the clubs which they part and also make the edit option to the particular club lead positions like only president, vp, secretary and any lead, to edit the event and other members have only their authorized aceess make this changes
+
+prompt 2- 
+In the club lead role in when club lead or memebr register the enter details like email or the other necessary details not visible in the profile inside the portal and also add the year and section and make visible it to the profile of the respective user and in club lead new event creation section not working proeprly make it worable and who register as the member can't access the club portal rember they are also member but limited access  so give entry to them and secretary and lead also can remove the presedent or vice president and secretary from memebers board in memebers sectin give this authority to only president and vice president not also for secretary and and for the super admin use only super admin name don't use any other like  administrator and other and for the club mentor when anyone registerd as a club mentor it should have the option to select the club from the available clubs to become mentor of them and have access only that club and also max access of two club which he can access after entering their dashboard in the top side make button to take access one also another club which first send requst to the super admin and then admin give access and remember club mentor have max two club access and min 1 and also the others sections in the club mentor not working like budget review, event progress make them working with proper authority if not actually is include in the budget or progress section then make it remain clean if have any then only now show and for all the three role try to change the password it show send request but password not change make it changeble within one click like ony hit change button and it should change make this changes correctly without error.
+
+Prompt 3 -
+assigned club to the faculty or mentor not visible in their panel make this changes and mentor should able to manage only this club correctly and improve this management system more correctly like add more features with correct working and which should have usefull and in student panel in annoucement section the new registered guide notification show which not usefull for the student so don't include like this wasted features and implement only the useful features and make the system runable without error change this mistakes and make the system runable
+
+
+Prompt 4 -
+analyzed the full project system and portal and thir use and give me the suggestions and idea  that how can i improve this system make this software industry ready for deployement and actuall uses of the users which primarily in the college  for students also give me security analysis that how can i improve this what database i have to use to changes in database required for the actuall implementation and also find the drawbacks in the system also find how can i improve the  the features in the system which helpfull to the users to track record and increases the use cases of the system  analyze in detail and give me the suggestins.
+
+
+Prompt 5-
+make the registred users tab in admin panel working and according to authority and name suggest super admin it should able to handle user database with all crud operations also able to take actions and also same for the active clubs able to take actions and perform crud operations in the overview section if alrady you done then make it redirecting to that section and also not do as i given then improve it and make like i have. and in the log in window the LOGIN AS is not useful like anyone who registred their role and choose other it can able to enter in their authorized role so remove this from from the log in only because by default user able to log in to their respective role. and club memeber are also part of the club portal but limited access to give the club portal access to the club member with only authorized access and club memebers are part of only few clubs so the features to make student section like the overview or management and add all the students features in that section like explore events of other club not own club and also all other sudents features which given in the ss and also in studnet panel make this changes correctly.
+
+Prompt 6-
+once again analyzed all changes as i said earlier are done properly if not any then do it and give me the full controllable system and also give the option to the students to the apply for the club the structure of the club like for the first year students have Member Board (all positions are equal no lead of them so all memebers), second year have Assistant board(positions available are secretary and other assistant role also specifies option to enter in inbox in form) and Third year have Main board and for final year have Mentor board so who registered as first year or second year or third year so they can able to apply for their respective board. and the application is visible to thier all senior board like student of the first year applied then applications visible to assistant board and above all and same for all boards also when students applied to post the in the club panel they can able to take actions like schedule the aptitude test and interview or broadcast result of them and able to send notification to selected candidate in the system not outside and after the approve button student have access to able the club portal with their limited roles and and this actions perform by the authorized club admin. make this system without error with proper working.
+
+Prompt 7-
+when i registered as a student in registration panel the msg show the request goes to the super admin but in the super admin pending request section their is no  pending request show to approve solve this problem and also in the regisration panel of the student in section only have two option Aided and Unaided and also add the Year input field for btech have 1st to 4th year and for mtech have 1st and 2nd year make this changes and make code runable without error.
+
+Prompt 8-
+the student or club meber or any other role when register in the register panel and enter the information in the field this necessary information should have to able to see in their profile in the portal and when the any user send the account deletion request the the request should go to the super admin for approval the action should hide the account and don't delete permanently account only hide the account that means if approve by super admin the user should not able to login the system and show msg your account is terminated and for continue account conatact super admin  and also when any club memeber from club portal click on go to the student section should be able to come back again club portal like it go to the student portal make it possible like you do earlier.
+
+************************** Prompt 9- **************************
+Based on a deep audit of both your backend and frontend codebases, the AXIS platform is NOT fully ready for production deployment yet. While the core functional requirements and logic work flawlessly in your local environment, there are several critical, deployment-breaking configuration issues, along with major security and stability improvements needed.
+
+Here are the full and exact details of what must be changed before you can deploy this system for actual campus use:
+
+🔴 Critical Blockers (Must fix before deployment)
+1. Hardcoded Localhost API URLs in the Frontend
+
+The Issue: Your frontend currently uses http://localhost:5000/api/v1 hardcoded across the entire application (in apiSlice.js, StudentDashboard.jsx, ClubAdminDashboard.jsx, LoginScreen.jsx, etc.).
+Why it fails in production: If you deploy your frontend to a host like Vercel or Netlify, users accessing your site from their phones or laptops will cause the code to try to fetch data from localhost:5000 on their own devices, causing the entire platform to crash with "Network Errors".
+The Fix Required: We must replace all physical strings with a Vite environment variable, e.g., const API = import.meta.env.VITE_API_URL || 'http://localhost:5000/api/v1'.
+2. Hardcoded CORS Origins in the Backend
+
+The Issue: In backend/src/app.js, your CORS configuration explicitly only allows requests from http://localhost:5173 and http://localhost:3000.
+Why it fails in production: When your frontend is deployed to a real domain (like https://axis-platform.com), your Node server will completely block all API requests due to origin mismatch, resulting in CORS blocked errors in the browser console.
+The Fix Required: Update cors() to read an allowed origin list from process.env.CLIENT_URL.
+🟡 Major Improvements (Required for production stability)
+3. Risky Database Syncing (alter: true)
+
+The Issue: Your backend entry execution (backend/src/server.js) uses db.sequelize.sync({ alter: true }).
+Why it's bad: While incredibly convenient for local development, using alter: true directly on a live production database can sometimes drop columns, lock tables, or corrupt data during restarts.
+The Fix Required: Change this to { force: false, alter: false } for production environments. Any future schema changes should be managed using proper Sequelize Migrations.
+4. Unprotected Brute-Force Authentication
+
+The Issue: Your /auth/login endpoint does not have rate-limiting. A malicious bot could spam login requests indefinitely to guess passwords or crash the server (DDoS).
+The Fix Required: We need to install express-rate-limit on the backend and apply a rule (e.g., max 5 login attempts per 15 minutes per IP address).
+5. Mocked External Services (Payments & Emails)
+
+The Issue: Your ticket purchasing logic currently just automatically flags is_paid = true. Furthermore, your emailService needs to be verified to use a real production transporter (like SendGrid or real Gmail SMTP) instead of failing silently on a server.
+The Fix Required: Before hosting real paid events, integrate a Razorpay or Stripe handler on your /student/pay route.
+🟢 Minor UX & Safety Fixes
+6. Missing Global Frontend Error Boundary
+
+The Issue: If a specific component receives unexpected data (e.g., an event title returns null accidentally), it will trigger a React crash, pulling down the entire dashboard into a "White Screen of Death".
+The Fix Required: Wrap your main <App /> tree in a React Error Boundary component that intercepts crashes and shows a graceful "Oops, something broke" fallback UI.
+Next Steps
+If you are planning to deploy soon, we need to tackle the Critical Blockers immediately, as the system physically cannot work on the internet without them.
+
+Would you like me to start by converting all the frontend and backend hardcoded localhost variables into secure Environment Variables?
+
+
+
+************************Passwords**********************
+----password as same username
+
+admin - admin => have all portal access (all 4 roles)
+23510014 -23510014 (gdg lead)
+
+****(club memeber role also student)
+23510013 - club president (gdg) 
+23510010 - vice president
+23510011 - secretary
+23510005 - member
+24510001 - Sy GDG Member
+
+Students -> New Registred
+23610010
+23410015
+24110001
+24210012
+25510001
+25510002
+25610001
+25610002
+25410001
+25410002
+
+
+*** (club mentor by default - technoclub if 1001)
+1001 - abpatil 
+1002 - rahulmore
+1003 - abmane (gdg group mentor)
+
+
+
+*********************************************

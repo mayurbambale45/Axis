@@ -5,7 +5,7 @@
 
 @layer base {
   :root {
-    font-size: 13px;           /* ← Professional compact base */
+    /* Standard base for better accessibility and consistent rem scaling */
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
   
@@ -25,9 +25,9 @@
   }
   
   /* Headings — tighter tracking for professional look */
-  h1 { font-size: 1.5rem;  font-weight: 700; letter-spacing: -0.025em; line-height: 1.2; }
-  h2 { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em;  line-height: 1.25; }
-  h3 { font-size: 1rem;    font-weight: 600; letter-spacing: -0.01em;  line-height: 1.3; }
+  h1 { font-size: 2.25rem; font-weight: 800; letter-spacing: -0.025em; line-height: 1.2; }
+  h2 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.02em;  line-height: 1.25; }
+  h3 { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.015em; line-height: 1.3; }
   p  { line-height: 1.5; }
 
   /* Input defaults */
